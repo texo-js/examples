@@ -1,0 +1,56 @@
+{
+  "name": "@texo/example-gateway-server",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Logging extensions for namespaced logging and filtering.",
+  "author": "Texo Authors <texo@defize.co.uk>",
+  "homepage": "https://github.com/compile-this/texo/tree/master/api/gateway#readme",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compile-this/texo.git"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/compile-this/texo/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@types/figlet": "^1.2.0",
+    "@types/jest": "^25.2.1",
+    "@types/koa__router": "^8.0.2",
+    "@types/triple-beam": "^1.3.0",
+    "@wessberg/rollup-plugin-ts": "^1.2.24",
+    "builtin-modules": "^3.1.0",
+    "fs-extra": "^9.0.0",
+    "rollup": "^2.8.2",
+    "typescript": "^3.8.3",
+    "winston-transport": "^4.3.0"
+  },
+  "dependencies": {
+    "@koa/router": "^8.0.8",
+    "@texo/graphql-gateway": "*",
+    "@texo/logging": "*",
+    "apollo-server-plugin-base": "^0.8.0",
+    "chalk": "^4.0.0",
+    "figlet": "^1.4.0",
+    "graphql": "^14.0.0",
+    "triple-beam": "^1.3.0",
+    "winston": "^3.2.1"
+  }
+}
