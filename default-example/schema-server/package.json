@@ -1,0 +1,29 @@
+{
+  "name": "@texo/default-example--schema-server",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/texo-js/examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/texo-js/examples/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "directories": {
+    "lib": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": { },
+  "dependencies": {
+    "@texo/graphql-schema": "*",
+    "@texo/logging": "*"
+  }
+}
