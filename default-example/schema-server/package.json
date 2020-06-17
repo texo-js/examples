@@ -25,5 +25,8 @@
   "dependencies": {
     "@texo/graphql-schema": "*",
     "@texo/logging": "*"
+  },
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node ./dist/"
   }
 }

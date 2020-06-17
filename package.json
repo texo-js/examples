@@ -39,7 +39,7 @@
   ],
   "resolutions": {
     "@texo/logging": "link:../texo/common/logging/",
-    "@texo/server-shared": "link:../texo/common/server-shared",
+    "@texo/server-common": "link:../texo/server/server-common",
     "@texo/graphql-schema": "link:../texo/servers/graphql-schema",
     "@texo/graphql-gateway": "link:../texo/servers/graphql-gateway"
   }
