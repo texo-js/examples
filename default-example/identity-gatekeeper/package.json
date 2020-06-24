@@ -1,5 +1,5 @@
 {
-  "name": "@texo/default-example--gateway-server",
+  "name": "@texo/default-example--identity-gatekeeper",
   "private": true,
   "version": "0.0.0",
   "description": "",
@@ -15,9 +15,6 @@
   },
   "type": "module",
   "main": "./dist/index.js",
-  "exports": {
-    "import": "./dist/index.js"
-  },
   "directories": {
     "lib": "dist"
   },
@@ -26,8 +23,11 @@
   ],
   "devDependencies": { },
   "dependencies": {
-    "@texo/server-graphql-gateway": "*",
-    "@texo/logging": "*"
+    "@texo/logging": "*",
+    "@texo/configurer": "*",
+    "@texo/server-common": "*",
+    "@texo/server-identity-gatekeeper": "*",
+    "dotenv": "^8.2.0"
   },
   "scripts": {
     "start": "node --experimental-specifier-resolution=node ./dist/"

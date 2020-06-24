@@ -1,4 +1,4 @@
-import { GraphQLSchemaModule, gql } from '@texo/graphql-schema';
+import { GraphQLSchemaModule, gql } from '@texo/server-graphql-schema';
 
 const typeDefs = gql`
   type Query {

@@ -9,6 +9,7 @@
 
   "references": [
     { "path": "./gateway-server/" },
-    { "path": "./schema-server/" }
+    { "path": "./schema-server/" },
+    { "path": "./identity-gatekeeper/" }
   ]
 }

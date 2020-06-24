@@ -23,7 +23,7 @@
   ],
   "devDependencies": { },
   "dependencies": {
-    "@texo/graphql-schema": "*",
+    "@texo/server-graphql-schema": "*",
     "@texo/logging": "*"
   },
   "scripts": {

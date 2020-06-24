@@ -39,8 +39,10 @@
   ],
   "resolutions": {
     "@texo/logging": "link:../texo/common/logging/",
-    "@texo/server-common": "link:../texo/server/server-common",
-    "@texo/graphql-schema": "link:../texo/servers/graphql-schema",
-    "@texo/graphql-gateway": "link:../texo/servers/graphql-gateway"
+    "@texo/configurer": "link:../texo/common/configurer/",
+    "@texo/server-common": "link:../texo/servers/server-common",
+    "@texo/server-graphql-schema": "link:../texo/servers/server-graphql-schema",
+    "@texo/server-graphql-gateway": "link:../texo/servers/server-graphql-gateway",
+    "@texo/server-identity-gatekeeper": "link:../texo/servers/server-identity-gatekeeper"
   }
 }

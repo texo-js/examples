@@ -1,20 +1,15 @@
-import { GatewayServer, HttpGraphQLModuleDefinition, GatewayServerOptions } from '@texo/server-graphql-gateway';
-import { createLogger, NamespacedLogger, NamespaceFilters, transports, format } from '@texo/logging';
+import { createLogger, NamespacedLogger, NamespaceFilters, format, transports } from '@texo/logging';
 import { ServerMetadata } from '@texo/server-common';
+import { Server, getOptions } from '@texo/server-identity-gatekeeper';
+
 
 export async function server() {
+  const options = await getOptions();
+  const metadata: ServerMetadata = { applicationName: '', applicationVersion: '' };
   const rootLogger = createServerLogger();
 
-  const options: GatewayServerOptions = { name: 'blank' };
-  const metadata: ServerMetadata = { applicationName: "Schema Example", applicationVersion: "0.0.0" };
-
-  const modules = [
-    new HttpGraphQLModuleDefinition('billing', { url: 'http://localhost:8080/graphql' })
-  ];
-
-  const server = new GatewayServer({ options, metadata, modules, rootLogger });
-
-  server.listen({ port: 8081 });
+  const server = new Server({ options, metadata, rootLogger })
+  server.listen({ port: 8082 });
 }
 
 function createServerLogger() : NamespacedLogger {
