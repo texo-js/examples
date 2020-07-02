@@ -1,34 +1,25 @@
 import { SchemaServer, SchemaServerOptions } from '@texo/server-graphql-schema';
-import { createLogger, NamespacedLogger, NamespaceFilters, transports, format } from '@texo/logging';
+import { ServerMetadata, Logger, Loggers, Transports, Defaults, setSystemLogger } from '@texo/server-common';
 
 import RootModule from './schema/root'
-import { Server } from 'http';
-import { ServerMetadata } from '../../../../texo/node_modules/@texo/server-common/lib';
 
 export async function server() {
-  const rootLogger = logger();
+  const logger = initializeLogging();
 
   const options: SchemaServerOptions = { name: 'blank' };
   const metadata: ServerMetadata = { applicationName: "Schema Example", applicationVersion: "0.0.0"}
 
   const modules = [ RootModule ]
   
-  const server = new SchemaServer({ options, metadata, modules, rootLogger});
+  const server = new SchemaServer({ options, metadata, modules });
   server.listen({ port: 8080 });
 }
 
-function logger() : NamespacedLogger {
-  const consoleFormat = format.combine(
-    format.colorize(),
-    format.timestamp(),
-    format.metadata({fillExcept: [ 'level', 'ns', 'timestamp', 'message' ]}),
-    format.printf(info => `${info.level} ${info.timestamp} ${info.ns} ${info.message} ${JSON.stringify(info.metadata)}`)
-  );
+function initializeLogging() : Logger {
+  const consoleTransport = new Transports.Console({ format: Defaults.DefaultConsoleFormat });
 
-  const filters = new NamespaceFilters('debug', '*');
-  return createLogger('EXAMPLE', filters, {
-    level: 'debug',
-    format: consoleFormat,
-    transports: [ new transports.Console() ]
-  });
+  const logger = Loggers.create({ options: { level: 'debug', transports: [ consoleTransport ] }, namespace: 'example' });
+  setSystemLogger(logger);
+
+  return logger;
 }

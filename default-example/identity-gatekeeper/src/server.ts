@@ -1,29 +1,21 @@
-import { createLogger, NamespacedLogger, NamespaceFilters, format, transports } from '@texo/logging';
-import { ServerMetadata } from '@texo/server-common';
+import { ServerMetadata, Logger, Loggers, Defaults, Transports, setSystemLogger } from '@texo/server-common';
 import { Server, getOptions } from '@texo/server-identity-gatekeeper';
 
-
 export async function server() {
-  const options = await getOptions();
-  const metadata: ServerMetadata = { applicationName: '', applicationVersion: '' };
-  const rootLogger = createServerLogger();
+  const logger = initializeLogging();
 
-  const server = new Server({ options, metadata, rootLogger })
+  const options = await getOptions();
+  const metadata: ServerMetadata = { applicationName: 'Example Identity Gatekeeper', applicationVersion: process.env.npm_package_version || '<unknown>' };
+  
+  const server = new Server({ options, metadata })
   server.listen({ port: 8082 });
 }
 
-function createServerLogger() : NamespacedLogger {
-  const consoleFormat = format.combine(
-    format.colorize(),
-    format.timestamp(),
-    format.metadata({fillExcept: [ 'level', 'ns', 'timestamp', 'message' ]}),
-    format.printf(info => `${info.level} ${info.timestamp} ${info.ns} ${info.message} ${JSON.stringify(info.metadata)}`)
-  );
+function initializeLogging() : Logger {
+  const consoleTransport = new Transports.Console({ format: Defaults.DefaultConsoleFormat });
 
-  const filters = new NamespaceFilters('debug', '*');
-  return createLogger('EXAMPLE', filters, {
-    level: 'debug',
-    format: consoleFormat,
-    transports: [ new transports.Console() ]
-  });
+  const logger = Loggers.create({ options: { level: 'debug', transports: [ consoleTransport ] }, namespace: 'example' });
+  setSystemLogger(logger);
+
+  return logger;
 }

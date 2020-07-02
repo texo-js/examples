@@ -27,7 +27,7 @@
   "devDependencies": { },
   "dependencies": {
     "@texo/server-graphql-gateway": "*",
-    "@texo/logging": "*"
+    "@texo/server-common": "*"
   },
   "scripts": {
     "start": "node --experimental-specifier-resolution=node ./dist/"
