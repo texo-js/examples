@@ -1,5 +1,6 @@
 import { SchemaServer, SchemaServerOptions } from '@texo/server-graphql-schema';
-import { ServerMetadata, Logger, Loggers, Transports, Defaults, setSystemLogger } from '@texo/server-common';
+import { Logger, Loggers, Transports, Defaults } from '@texo/logging';
+import { ServerMetadata } from '@texo/server-common';
 
 import RootModule from './schema/root'
 
@@ -19,7 +20,7 @@ function initializeLogging() : Logger {
   const consoleTransport = new Transports.Console({ format: Defaults.DefaultConsoleFormat });
 
   const logger = Loggers.create({ options: { level: 'debug', transports: [ consoleTransport ] }, namespace: 'example' });
-  setSystemLogger(logger);
+  Loggers.setSystem(logger);
 
   return logger;
 }

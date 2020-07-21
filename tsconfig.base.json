@@ -9,5 +9,6 @@
     "resolveJsonModule": true,
     "strict": true,
     "types": [ "jest", "node" ],
+    "experimentalDecorators": true
   },
 }

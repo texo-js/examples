@@ -1,5 +1,5 @@
 import { GatewayServer, HttpGraphQLModuleDefinition, GatewayServerOptions, configurer, ConfigurationError } from '@texo/server-graphql-gateway';
-import { Loggers, Logger, Formats, Filters, Transports, NamespaceSet, setSystemLogger, Defaults } from '@texo/server-common';
+import { Loggers, Logger, Defaults, Transports } from '@texo/logging';
 import { ServerMetadata } from '@texo/server-common';
 
 export async function server() {
@@ -28,7 +28,7 @@ function initializeLogging() : Logger {
   const consoleTransport = new Transports.Console({ format: Defaults.DefaultConsoleFormat });
 
   const logger = Loggers.create({ options: { level: 'debug', transports: [ consoleTransport ] }, namespace: 'example' });
-  setSystemLogger(logger);
+  Loggers.setSystem(logger);
 
   return logger;
 }
