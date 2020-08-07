@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.base.json",
+
+  "compilerOptions": {
+    "composite": true
+  },
+
+  "files": [],
+
+  "references": [
+    { "path": "./gateway-server/" },
+    { "path": "./schema-server/" },
+    { "path": "./identity-gatekeeper/" }
+  ]
+}

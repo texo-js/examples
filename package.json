@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "engines": {},
+  "name": "@texo/examples",
+  "description": "Example projects using the Texo framework.",
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/texo-js/examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/texo-js/examples/issues"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "test": "jest",
+    "watch": "tsc --build --watch",
+    
+    "default:start": "wendyl ./default/wendyl.config.json"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^14.0.1",
+    "babel-jest": "^26.0.1",
+    "eslint": "^7.0.0",
+    "jest": "^26.0.1",
+    "lerna": "^3.20.2",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.9.2"
+  },
+  "workspaces": [
+    "default-example/*"
+  ],
+  "resolutions": {
+    "@texo/logging": "link:../texo/common/logging/",
+    "@texo/configurer": "link:../texo/common/configurer/",
+    "@texo/server-common": "link:../texo/servers/server-common",
+    "@texo/server-graphql-schema": "link:../texo/servers/server-graphql-schema",
+    "@texo/server-graphql-gateway": "link:../texo/servers/server-graphql-gateway",
+    "@texo/server-identity-gatekeeper": "link:../texo/servers/server-identity-gatekeeper"
+  }
+}
